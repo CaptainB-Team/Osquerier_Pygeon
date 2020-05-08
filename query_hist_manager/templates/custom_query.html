@@ -1,0 +1,30 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    <title>Querier Pygeon - Custom Query</title>
+{% endblock %}
+
+{% block nav%}
+    <ul class="nav navbar-nav">
+        <li>{% block nav-homepage %}<a href="{% url 'index' %}">Home</a>{% endblock %}</li>
+        <li>{% block nav-querybuilder %}<a href="{% url 'querybuilder' %}">Query Builder</a>{% endblock %}</li>
+        <li  class="active">{% block nav-custom_query_sender %}<a href="{% url 'custom_query_sender' %}">Custom Query</a>{% endblock %}</li>
+        <li>{% block nav-queryhist %}<a href="{% url 'queryhist' %}">Query History</a>{% endblock %}</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Send Custom Query</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" value="Send Query">
+    </form>
+    {% if response_text != '' %}
+    <br>
+    <p>Response:</p>
+    <p>{{ response_text }}</p>
+    {% endif %}
+{% endblock %}

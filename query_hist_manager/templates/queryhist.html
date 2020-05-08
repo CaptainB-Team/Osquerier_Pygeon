@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    <title>Querier Pygeon - Query History</title>
+{% endblock %}
+
+{% block nav%}
+    <ul class="nav navbar-nav">
+        <li>{% block nav-homepage %}<a href="{% url 'index' %}">Home</a>{% endblock %}</li>
+        <li>{% block nav-querybuilder %}<a href="{% url 'querybuilder' %}">Query Builder</a>{% endblock %}</li>
+        <li>{% block nav-custom_query_sender %}<a href="{% url 'custom_query_sender' %}">Custom Query</a>{% endblock %}</li>
+        <li class="active">{% block nav-queryhist %}<a href="{% url 'queryhist' %}">Query History</a>{% endblock %}</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Query History</h1>
+    {% if query_history_list %}
+        <table class="table table-striped table-bordered table-responsive">
+            <th>
+                Query
+                <td>Response</td>
+                <td>Time Sent</td>
+            <th>
+            {% for QueryHistItem in query_history_list %}
+                <tr>
+                    <td>{{ QueryHistItem.query_text }}</td>
+                    <td>{{ QueryHistItem.response_text }}</td>
+                    <td>{{ QueryHistItem.time_issued }}</td>
+                <tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Welcome to the PyQuerier query history page! The query history is currently empty. Go to the query builder page to start making some queries!</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    <title>Querier Pygeon - Home</title>
+{% endblock %}
+
+{% block nav%}
+    <ul class="nav navbar-nav">
+        <li  class="active">{% block nav-homepage %}<a href="{% url 'index' %}">Home</a>{% endblock %}</li>
+        <li>{% block nav-querybuilder %}<a href="{% url 'querybuilder' %}">Query Builder</a>{% endblock %}</li>
+        <li>{% block nav-custom_query_sender %}<a href="{% url 'custom_query_sender' %}">Custom Query</a>{% endblock %}</li>
+        <li>{% block nav-queryhist %}<a href="{% url 'queryhist' %}">Query History</a>{% endblock %}</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the Querier Pygeon launch page! If you know what you're doing with OSQuery and have everything configured properly, feel free to go start making queries on the Custom Query page.</p>
+    <p>If all of this is new to you, feel free to check out the OSQuery documentation <a href="https://osquery.readthedocs.io/en/stable/" target="_blank">here</a>, and when you're ready to start making queries, head on over to the Query Builder page, which is designed to be useful for those unfamiliar with OSQuery and SQL in general.</p>
+{% endblock %}

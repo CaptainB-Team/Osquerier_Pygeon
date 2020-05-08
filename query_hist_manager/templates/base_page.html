@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Querier Pygeon</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+             <div class="navbar-header">
+                 <a class="navbar-brand" href="{% url 'index' %}">Querier Pygeon</a>
+             </div>
+             {% block nav%}
+             <ul class="nav navbar-nav">
+                 <li>{% block nav-homepage %}<a href="{% url 'index' %}">Home</a>{% endblock %}</li>
+                 <li>{% block nav-querybuilder %}<a href="{% url 'querybuilder' %}">Query Builder</a>{% endblock %}</li>
+                 <li>{% block nav-custom_query_sender %}<a href="{% url 'custom_query_sender' %}">Custom Query</a>{% endblock %}</li>
+                 <li>{% block nav-queryhist %}<a href="{% url 'queryhist' %}">Query History</a>{% endblock %}</li>
+             </ul>
+             {% endblock %}
+    </nav>
+    <div class="body-text">
+             {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
